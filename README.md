@@ -8,4 +8,6 @@ The template can be used to deploy a LAB-like environment for learning, testing 
 
 The template is customisable and can be used to build and generate similar network patterns within an Azure Subscription and of course can be expanded to support your unique use cases. The use of the fictitious Litware Inc company, naming conventions and IP schemas can be changed to better reflect your context and as such are not dependancies for success.
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/) <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/DarrenMayes/armvirtualNetwork/master/azuredeploy.json" target="_blank">
+  <img src="http://armviz.io/visualizebutton.png"/>
+</a>
