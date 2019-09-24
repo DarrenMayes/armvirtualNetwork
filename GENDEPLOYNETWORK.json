@@ -1382,7 +1382,29 @@
             }
           }
         ]
-      }
+      },
+      "resources": [
+        {
+            "apiVersion": "2016-06-01",
+            "type": "virtualNetworkPeerings",
+            "name": "[concat(parameters('azvirtualNetwork1'), '-to-', parameters('azvirtualNetwork2'))]",
+            "location": "[parameters('resourceEULocation')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('azvirtualNetwork1'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('azvirtualNetwork2'))]"
+            ],
+            "comments": "This is the peering from vNet 1 to vNet 2",
+            "properties": {
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": false,
+                "allowGatewayTransit": false,
+                "useRemoteGateways": false,
+                "remoteVirtualNetwork": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworks',parameters('azvirtualNetwork2'))]"
+                }
+            }
+        }
+     ]
     },
     {
       "name": "[parameters('azvirtualNetwork2')]",
@@ -1470,8 +1492,33 @@
             }
           }
         ]
-      }
+      },
+      "resources": [
+        {
+            "apiVersion": "2016-06-01",
+            "type": "virtualNetworkPeerings",
+            "name": "[concat(parameters('azvirtualNetwork2'), '-to-', parameters('azvirtualNetwork1'))]",
+            "location": "[parameters('resourceEU2Location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('azvirtualNetwork1'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('azvirtualNetwork2'))]"
+            ],
+            "comments": "This is the peering from vNet 1 to vNet 2",
+            "properties": {
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": false,
+                "allowGatewayTransit": false,
+                "useRemoteGateways": false,
+                "remoteVirtualNetwork": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworks',parameters('azvirtualNetwork1'))]"
+                }
+            }
+        }
+     ]
     }
+
+
+
   ],
 	"outputs": {}
 }
